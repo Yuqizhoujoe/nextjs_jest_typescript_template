@@ -18,19 +18,19 @@ const Header = () => {
             <List className={headerListCss}>
               <ListItem
                 link="/"
-                content="All Campaigns"
+                content="Home"
                 anchorClassName={headerAnchorCss}
                 listItemClassName={headerListItemCss}
               />
               <ListItem
-                link="/campaigns/newCampaign"
-                content="Create New Campaign"
+                link="/"
+                content="Second Home?"
                 anchorClassName={headerAnchorCss}
                 listItemClassName={headerListItemCss}
               />
               <ListItem
-                link="/campaigns/newCampaign"
-                content="All Requests"
+                link="/"
+                content="Third Home?"
                 anchorClassName={headerAnchorCss}
                 listItemClassName={headerListItemCss}
               />
