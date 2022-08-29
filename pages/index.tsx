@@ -15,7 +15,7 @@ export default function Home({ sampleData }: { sampleData: string }) {
   }, [data]);
 
   return (
-    <div>
+    <div className="h-screen">
       <Table />
     </div>
   );

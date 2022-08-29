@@ -15,6 +15,7 @@ export interface ButtonInterface {
   label: string;
   btnClassName?: string;
   btnSpanClassName?: string;
+  btnDivClassName?: string;
   type?: "submit" | "reset" | "button";
   handleClick?: () => any;
 }

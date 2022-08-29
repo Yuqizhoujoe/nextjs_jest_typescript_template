@@ -17,13 +17,13 @@ const Header = () => {
             <List className="navbar-nav mr-auto flex justify-center">
               <ListItem
                 link="/"
-                content="All Campaigns"
+                content="Home"
                 anchorClassName={headerAnchorCss}
                 listItemClassName={headerListItemCss}
               />
               <ListItem
-                link="/campaigns/newCampaign"
-                content="Create New Campaign"
+                link="/"
+                content="Whatever"
                 anchorClassName={headerAnchorCss}
                 listItemClassName={headerListItemCss}
               />
