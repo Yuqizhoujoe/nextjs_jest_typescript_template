@@ -1,4 +1,4 @@
-import { ListInterface } from "../../../modal/Common/interface";
+import { ListInterface } from "../../../shared/modal/Common/interface";
 
 const List = (props: ListInterface) => {
   const { className, children: listChildren } = props;

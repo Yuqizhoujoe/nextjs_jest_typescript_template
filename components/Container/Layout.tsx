@@ -1,4 +1,4 @@
-import { LayoutInterface } from "../../modal/Common/interface";
+import { LayoutInterface } from "../../shared/modal/Common/interface";
 import Header from "../Common/Header/Header";
 import Footer from "@/components/Common/Footer/Footer";
 

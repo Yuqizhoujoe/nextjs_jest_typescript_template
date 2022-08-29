@@ -1,4 +1,4 @@
-import { ListItemInterface } from "../../../modal/Common/interface";
+import { ListItemInterface } from "../../../shared/modal/Common/interface";
 import Link from "next/link";
 
 const ListItem = (props: ListItemInterface) => {

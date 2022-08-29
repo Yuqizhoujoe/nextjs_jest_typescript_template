@@ -1,4 +1,4 @@
-import { TableItemInterface } from "../../../modal/Common/interface";
+import { TableItemInterface } from "../../../shared/modal/Common/interface";
 
 const TableItem = (props: TableItemInterface) => {
   const { text, scope, th } = props;

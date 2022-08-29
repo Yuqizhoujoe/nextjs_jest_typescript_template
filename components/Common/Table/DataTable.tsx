@@ -1,19 +1,19 @@
 import { DataGrid } from "@mui/x-data-grid";
-import { TableInterface } from "../../../modal/Common/interface";
+import { DataTableInterface } from "../../../shared/modal/Common/interface";
 
 const rowsPerPage = 5;
 
-const DataTable = (props: TableInterface) => {
+const DataTable = (props: DataTableInterface) => {
   const { cols, rows } = props;
 
-  console.log(rows);
+  const pageSize = Math.ceil(rows.length / rowsPerPage);
 
   return (
     <div className="h-96 w-full text-center">
       <DataGrid
         columns={cols}
         rows={rows}
-        pageSize={Math.ceil(rows.length / rowsPerPage)}
+        pageSize={pageSize}
         rowsPerPageOptions={[rowsPerPage]}
         autoHeight
       />
