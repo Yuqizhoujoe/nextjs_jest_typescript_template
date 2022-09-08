@@ -1,23 +1,31 @@
 import { GridColDef } from "@mui/x-data-grid";
+import { HTMLInputTypeAttribute } from "react";
 
 export interface InputInterface {
-  type: string;
+  initialValue?: any;
+  type?: HTMLInputTypeAttribute;
+  textbox?: boolean;
   name: string;
   id: string;
   inputClassName?: string;
   labelClassName?: string;
+  inputDivClassName?: string;
+  money?: boolean;
   required: boolean;
   label: string;
-  handleChange?: (value: any) => any;
+  handleChange?: (value: any, valid: boolean) => any;
+  validate?: (value: any) => boolean;
+  rows?: number;
 }
 
 export interface ButtonInterface {
   label: string;
   btnClassName?: string;
   btnSpanClassName?: string;
-  btnDivClassName?: string;
   type?: "submit" | "reset" | "button";
   handleClick?: () => any;
+  btnDivClassName?: string;
+  disable?: boolean;
 }
 
 export interface LayoutInterface {
@@ -36,13 +44,65 @@ export interface ListInterface {
   children: JSX.Element | JSX.Element[];
 }
 
-export interface TableItemInterface {
-  text: string;
-  scope?: string;
-  th?: boolean;
+export interface TableInterface {
+  HeaderChildren: JSX.Element | JSX.Element[];
+  BodyChildren: JSX.Element | JSX.Element[];
+  quantity: number;
+  perPage: number;
 }
 
-export interface TableInterface {
+export interface TableItemInterface {
+  text: string;
+  type?: string;
+  onClick?: () => any;
+  imageUrl?: string;
+  imageCss?: string;
+  tableCellCss?: string;
+}
+
+export interface TableRowInterface {
+  children: JSX.Element | JSX.Element[];
+  className?: string;
+}
+
+export interface DataTableInterface {
   rows: any[];
   cols: GridColDef[];
+}
+
+export interface FormInterface {
+  onSubmit: () => any;
+  className?: string;
+  children: any;
+  error?: any;
+}
+
+export interface FormInputActionInterface<T> {
+  type: string;
+  payload?: T;
+}
+
+export interface FormInputStateInterface<T> {
+  value: T;
+  touch: boolean;
+}
+
+export interface AlertInterface {
+  message: string;
+}
+
+export interface CampaignCard {
+  label: string;
+  cardDivCss?: string;
+  description?: string;
+  actionLabel?: string;
+  onClick?: () => any;
+}
+
+export interface BackButtonInterface {
+  onClick: () => any;
+}
+
+export interface IconInterface {
+  css?: string;
 }

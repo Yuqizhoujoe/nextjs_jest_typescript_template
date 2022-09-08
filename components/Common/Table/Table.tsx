@@ -1,44 +1,58 @@
-import TableItem from "@/components/Common/Table/TableItem";
-import TableRow from "@/components/Common/Table/TableRow";
+import { TableInterface } from "../../../shared/modal/Common/interface";
+import Arrow from "@/components/Common/Icon/Arrow";
+import { ARROW_DIRECTION } from "../../../shared/common/constant";
+import { useState } from "react";
 
-const defaultTableRowCss =
-  "bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600";
+const Table = (props: TableInterface) => {
+  const { HeaderChildren, BodyChildren, quantity, perPage } = props;
+  const [currentPage, setCurrentPage] = useState(1);
+  const page = Math.ceil(quantity / perPage);
+  const isLastPage = currentPage === page;
+  const isFirstPage = currentPage === 1;
 
-const Table = (props: any) => {
-  const { managerAddress, contribution, balance, name, requestsCount } = props;
+  const leftArrowClick = () => {
+    if (isFirstPage) return;
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  const rightArrowClick = () => {
+    if (isLastPage) return;
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const renderBodyChildrenByPage = () => {
+    if (Array.isArray(BodyChildren)) {
+      const start = (currentPage - 1) * perPage;
+      const end = start + perPage;
+      return BodyChildren.slice(start, end);
+    }
+
+    return BodyChildren;
+  };
 
   return (
     <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <TableRow>
-            <TableItem scope="col" th text=" " />
-            <TableItem scope="col" th text="Value" />
-          </TableRow>
+          {HeaderChildren}
         </thead>
-        <tbody>
-          <TableRow className={defaultTableRowCss}>
-            <TableItem text="Campaign Name" scope="row" th />
-            <TableItem text={name} />
-          </TableRow>
-          <TableRow className={defaultTableRowCss}>
-            <TableItem text="Manager" scope="row" th />
-            <TableItem text={managerAddress} />
-          </TableRow>
-          <TableRow className={defaultTableRowCss}>
-            <TableItem text="Minimum Contribution" scope="row" th />
-            <TableItem text={contribution} />
-          </TableRow>
-          <TableRow className={defaultTableRowCss}>
-            <TableItem text="Campaign Balance" scope="row" th />
-            <TableItem text={balance} />
-          </TableRow>
-          <TableRow className={defaultTableRowCss}>
-            <TableItem text="No. Requests" scope="row" th />
-            <TableItem text={requestsCount} />
-          </TableRow>
-        </tbody>
+        <tbody>{renderBodyChildrenByPage()}</tbody>
       </table>
+      <div className="flex justify-evenly items-center bg-slate-50">
+        <Arrow
+          onClick={leftArrowClick}
+          className="left_arrow p-2 text-gray-300 rounded-full hover:scale-75 hover:cursor-pointer"
+          direction={ARROW_DIRECTION.LETF}
+        />
+        <p className="page_content text-xs text-gray-300">
+          {currentPage} / {page}
+        </p>
+        <Arrow
+          onClick={rightArrowClick}
+          className="left_arrow p-2 text-gray-300 rounded-full hover:scale-75 hover:cursor-pointer"
+          direction={ARROW_DIRECTION.RIGHT}
+        />
+      </div>
     </div>
   );
 };
